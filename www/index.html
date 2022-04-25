@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hotel California</title>
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <script src="js/lib/jquery.validate.js"></script>
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" href="css/FinalHotel.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+    <!--our stuff-->
+    <link rel="stylesheet" href="css/SLmystyle.css">
+    <script src="js/SLutil.js"></script>
+    <script src="js/SLglobal.js"></script>
+    <script src="js/SLfacade.js"></script>
+    <script src="js/SLdatabase.js"></script>
+    <script src="js/SLDal.js"></script>
+    <script src="js/camera.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/jquery.swipeSlider.js"></script>
+    <script>
+        $(document).ready(function() {
+            var options = {
+                // animationDuration: 300,
+                // autoReverse: true,
+                // autoTransitionDuration: false, // in ms
+                // bounce: true,
+                 drag: true
+                // infinite: true,
+                // onSlideStartCallback: function() {},
+                // onSlideCompleteCallback: function() {},
+                // onMoveCallback: function() {},
+                // onStartCallback: function() {},
+                // startIndex: 0
+            }
+
+            var slider = $('#slider').swipeSlider(options);
+
+            $('.next').on('click', function() {
+                slider.swipeSlider('slideNext');
+            });
+
+            $('.previous').on('click', function() {
+                slider.swipeSlider('slidePrevious');
+            });
+        });
+    </script>
+</head>
+<body>
+<!--Home Page-->
+<div data-role="page" id="HomePage">
+<header data-role="header" data-theme="a">
+    <h1>SL Hotel California</h1>
+</header>
+<section data-role="content">
+    <img style="width: 100%" src="./img/LogoSL.png">
+<!--    <img src="img/hotel-svgrepo-com.svg" alt=""  style="width: 80%; height: 50%; position: relative; " class="align-center">-->
+    <p style="font-size: smaller">Swipe left to see more images</p>
+    <div id="slider">
+        <div>
+            <div>
+                <img style="width: 100%" src="https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
+            </div>
+            <div>
+                <img style="width: 100%" src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80">
+            </div>
+            <div>
+                <img style="width: 100%"  src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80">
+            </div>
+        </div>
+    </div>
+
+    <p>Here are the Room Types</p>
+
+    <div data-role="collapsibleset">
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>King's Room</h3>
+            <img style="width: 100%" src="img/KingRoom.jpg">
+            <ul>
+                <li>Max Occupancy: 2 people</li>
+                <li>Breakfast Included: Yes</li>
+                <li>One bed</li>
+                <li>Price: 150$ per night</li>
+            </ul>
+        </div>
+
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>Queen's Room</h3>
+            <img style="width: 100%" src="img/QueenRoom.jpg">
+            <ul>
+                <li>Max Occupancy: 2 -4 people</li>
+                <li>Breakfast Included: Yes</li>
+                <li>One - two beds</li>
+                <li>Price: 150$ - 250 per night</li>
+            </ul>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>Guest's Room</h3>
+            <img style="width: 100%" src="img/GuestRoom.jpg">
+            <ul>
+                <li>Max Occupancy: 1 Person</li>
+                <li>Breakfast Included: No</li>
+                <li>One bed</li>
+                <li>Price: 100$</li>
+            </ul>
+        </div>
+    </div>
+
+    <p style="text-align: center">Please Upload an image of your identity to verify the account</p>
+    <button type="button" id="btnCapturePhoto" name="btnCapturePhoto" data-icon="camera"
+            data-iconpos="left" style="width: 50%; left: 25%"
+            data-theme="a" data-inline="false" class="ui-btn-active">Capture Photo
+    </button>
+
+    <button type="button" id="btnLoadFromLibrary" name="btnLoadFromLibrary" data-icon="arrow-u"
+            data-iconpos="left" style="width: 75%; left: 13%"
+            data-theme="a" data-inline="false">Load from Photo Library
+    </button>
+</section>
+<footer data-role="footer" data-theme="a" data-position="fixed">
+    <div data-role="navbar" data-iconpos="top" >
+        <ul>
+            <li><a href="#HomePage" data-icon="home"
+                   class="ui-btn-active ui-state-persist">Home</a></li>
+            <li><a href="#BookPage" data-icon="plus">Book a Room</a></li>
+            <li><a href="#ViewRoomPage" data-icon="bullets">Reservations</a></li>
+            <li><a href="#AboutPage" data-icon="user">About</a></li>
+        </ul>
+    </div>
+</footer>
+</div>
+
+<!--Book Page-->
+<div data-role="page" id="BookPage">
+    <header data-role="header"data-theme="a">
+        <h1>Room Reservations</h1>
+
+    </header>
+    <section data-role="content">
+
+        <form id="frmReserve" name="frmReserve">
+
+            <span>Name:</span>
+            <input type="text" id="Name" name="Name" data-wrapper-class="name">
+            <div class="ui-field-contain">
+                <span>Room Type:</span>
+                <select name="typeId" id="typeId">
+                    <option value="guest">guest</option>
+                </select>
+            </div>
+            <span>Email:</span>
+            <input type="text" id="Email" name="Email" data-wrapper-class="email">
+            <label for="checkInDate">Check-In Date</label>
+            <input type="date" id="checkInDate" name="checkInDate" style="background: #333;border: 1px solid #555;color: #EEE;" data-clear-btn="true">
+            <label for="checkOutDate">Check-Out Date</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" style="background: #333;border: 1px solid #555;color: #EEE;" data-clear-btn="true">
+            <span>Special Request:</span>
+            <textarea rows="15" cols="30"  id="request" name="request" data-wrapper-class="comments"> </textarea>
+            <button type="button" style="width: 100px" class="btn ui-btn-active" id="ReserveBtn" name="ReserveBtn">Reserve</button>
+        </form>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home">Home</a></li>
+                <li><a href="#BookPage" data-icon="plus" class="ui-btn-active ui-state-persist">Book a Room</a></li>
+                <li><a href="#ViewRoomPage" data-icon="bullets">Reservations</a></li>
+                <li><a href="#AboutPage" data-icon="user">About</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+<!--View rooms-->
+<div data-role="page" id="ViewRoomPage"a>
+    <header data-role="header" data-theme="a" >
+        <h1>View Reservations</h1>
+    </header>
+    <section data-role="content">
+        <!--<ul id="ViewFeedback" data-role="listview" class="ui-listview-inset" data-inset="true" data-theme="a" >
+            &lt;!&ndash;<li style="border-radius: 5px" ><div><a href="#ModifyPage">
+
+            </div>  </li>&ndash;&gt;
+        </ul>-->
+
+        <ul id="ViewFeedback" data-role="listview" data-inset="true">
+            <li data-role="list-divider">Friday, October 8, 2010</li>
+            <li><a href="index.html">
+                <h2>Stephen Weber</h2>
+                <p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+                <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+            </a></li>
+        </ul>
+
+    </section>
+<footer data-role="footer" data-theme="a" data-position="fixed">
+
+    <div data-role="navbar" data-iconpos="top">
+        <ul>
+            <li><a href="#HomePage" data-icon="home">Home</a></li>
+            <li><a href="#BookPage" data-icon="plus" >Book a Room</a></li>
+            <li><a href="#ViewRoomPage" data-icon="bullets"class="ui-btn-active ui-state-persist">Reservations</a></li>
+            <li><a href="#AboutPage" data-icon="user">About</a></li>
+        </ul>
+    </div>
+</footer>
+</div>
+
+<!--Modify rooms-->
+<div data-role="page" id="ModifyPage">
+    <header data-role="header" data-position="fixed" data-theme="a">
+        <h1>Edit/Delete Rooms</h1>
+
+    </header>
+    <section data-role="content">
+
+        <form id="frmEdit" name="frmEdit">
+
+            <span>Name:</span>
+            <input type="text" id="NameE" name="NameE" data-wrapper-class="name">
+            <div class="ui-field-contain">
+                <span>Room Type:</span>
+                <select name="typeIdE" id="typeIdE">
+                    <option value="guest">guest</option>
+                </select>
+            </div>
+            <span>Email:</span>
+            <input type="text" id="EmailE" name="EmailE" data-wrapper-class="email">
+            <label for="checkInDateE">Check-In Date</label>
+            <input type="date" id="checkInDateE" name="checkInDateE" data-clear-btn="true">
+            <label for="checkOutDateE">Check-Out Date</label>
+            <input type="date" id="checkOutDateE" name="checkOutDateE" data-clear-btn="true">
+            <span>Special Request:</span>
+            <textarea rows="15" cols="30"  id="requestE" name="requestE" data-wrapper-class="comments"> </textarea>
+            <div style="display: flex; align-items: flex-start">
+            <button type="button" style="width: 100px" class="btn ui-btn-active" id="EditBtn" name="EditBtn">Update</button>
+            <button type="button" style="width: 100px" class="btn ui-btn-danger" id="DeleteBtn" name="DeleteBtn">Delete</button>
+            </div>
+        </form>
+    </section>
+    <footer data-role="footer" data-position="fixed"  data-theme="a">
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home">Home</a></li>
+                <li><a href="#BookPage" data-icon="plus" >Book a Room</a></li>
+                <li><a href="#ViewRoomPage" data-icon="bullets" class="ui-btn-active ui-state-persist">Reservations</a></li>
+                <li><a href="#AboutPage" data-icon="user">About</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+<!--About-->
+<div data-role="page" id="AboutPage">
+    <div class="background">
+
+    <header  data-role="header" data-position="fixed" data-theme="a">
+        <h1>About</h1>
+    </header>
+    <section style="margin-top: 10%" data-role="content">
+
+        <span class="bubbles"></span>
+        <span class="bubbles"></span>
+        <span class="bubbles"></span>
+        <span class="bubbles"></span>
+        <span class="bubbles"></span>
+        <span class="bubbles"></span>
+        <span class="bubbles"></span>
+
+
+        <h2>Developer's Name</h2>
+        <p>Son Shiu Lo</p>
+        <h2>Student Id</h2>
+        <p>8644073</p>
+        <button id="btnClearDatabase" class="btn ui-btn-a" >Clear Database</button>
+        <!--<button id="btnClearLocalStorage" class="btn ui-btn-a" >Clear Local Storage</button>-->
+
+    </section>
+    </div>
+    <footer data-role="footer" data-position="fixed"  data-theme="a">
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home">Home</a></li>
+                <li><a href="#BookPage" data-icon="plus">Book a Room</a></li>
+                <li><a href="#ViewRoomPage" data-icon="bullets">Reservations</a></li>
+                <li><a href="#AboutPage" data-icon="user" class="ui-btn-active ui-state-persist">About</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
